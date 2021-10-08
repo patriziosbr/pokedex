@@ -8,12 +8,32 @@
     background-repeat: no-repeat;
     background-size: contain;
     height: calc(100vh - 60px);
-    filter: opacity(25%);
+    .desk-60 {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        h2 {
+            margin-bottom: 160px;
+        }
+        .btn-default {
+            width: 180px;
+            font-weight: 600;
+            &:hover {
+                transition: 0.5s;
+                background-color: rgba(255,255,255,0.2);
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 576px) {
     .desk-60 {
         width: 60%;
         margin: 0 auto;
+        .btn-default {
+            width: 250px !important;
+        }
     }
 }

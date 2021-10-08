@@ -11,3 +11,19 @@
 a {
     text-decoration: none;
 }
+.text-black {
+    color: $text-black;
+}
+.w-50 {
+    width: 50%;
+}
+
+.btn-default {
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: #fff;
+    margin-left: 16px;
+    transition: 0.5s;
+    text-align: center;
+}

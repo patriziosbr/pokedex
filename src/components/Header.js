@@ -12,7 +12,7 @@ const Header = ()=>{
                     </Link>
                 </div>
                 <div className="desk-nav">
-                    <Link className="btn-default" to="/pokemon">
+                    <Link className="btn-default" to="/pokemons">
                         <i className="fas fa-border-all"></i>
                         <small>Pokedex</small>
                     </Link>
