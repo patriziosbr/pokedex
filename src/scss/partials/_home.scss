@@ -1,0 +1,19 @@
+.bg-red {
+    background-color: $red-primary;
+}
+
+.bg-home {
+    background-image: url('../../assets/pokeball.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: calc(100vh - 60px);
+    filter: opacity(25%);
+}
+
+@media screen and (min-width: 576px) {
+    .desk-60 {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
