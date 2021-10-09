@@ -22,13 +22,13 @@ class Pokemon extends Component {
             console.log('axios error', err);
         })
     }
-    renderPropeties() {
+    renderTypes() {
         return <ul>
-        {this.state.pokeData.types.map(ele =>
-            <li>
+        {this.state.pokeData.types.map((ele, index) =>
+            <li key={index}>
               {ele.type.name}
             </li>
-          )};
+          )}
           </ul>
         }
     
@@ -40,15 +40,15 @@ class Pokemon extends Component {
                 <div className="w-80 pokemon-box">
                     <div className="singlePoke">
 
-                        <h3>{pokeData.name}</h3>
+                        <h1>{pokeData.name}</h1>
                         <ul>
                             <li><strong>Next level: </strong>{pokeData.base_experience}</li>
                         </ul>
-                        <ul>
+                        <div>
                             {
-                               this.state.init ? <div>{this.renderPropeties()}</div> : <div>Loading...</div> 
+                               this.state.init ? <div>{this.renderTypes()}</div> : <div>Loading...</div> 
                             }
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
