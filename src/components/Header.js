@@ -33,7 +33,7 @@ const Header = ()=>{
                     <i className="fas fa-home"></i>
                    <small>home</small>
                 </Link>
-                <Link to="/pokemon">
+                <Link to="/pokemons">
                     <i className="fas fa-border-all"></i>
                    <small>Pokedex</small>
                 </Link>
