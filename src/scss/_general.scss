@@ -2,6 +2,7 @@
 @import './partials/header';
 @import './partials/home';
 @import './partials/pokemonCard';
+@import './partials/pokemon';
 
 
 * {
@@ -18,6 +19,10 @@ a {
 }
 .w-50 {
     width: 50%;
+}
+.w-80 {
+    width: 80%;
+    margin: 0 auto;
 }
 
 .btn-default {
