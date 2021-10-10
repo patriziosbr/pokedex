@@ -1,13 +1,33 @@
 import {Link} from "react-router-dom";
+import React, { Component } from "react";
+
+class PokemonCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ...props,
+            pippo : []
+        };
+
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log('Hai cliccato Invia.');
+
+      }
+    getPokemon(props) {
+        this.pippo = props
+        console.log(this.pippo);
+    }
 
 
-const PokemonCard = (props) => {
-    // console.log(props);
-
-    return(
+    render() {
+        return(
             <div>
-                <div  className="card-box">
-                    {props.pokemons.map((pokemon, key) => {
+                {
+                    this.props.pokemons.length > 0 && 
+                    <div  className="card-box">
+                    {this.props.pokemons.map((pokemon, key) => {
                         return (
                             <div className="card" key={key}>
                                 <Link
@@ -20,40 +40,20 @@ const PokemonCard = (props) => {
                                 </Link>
                                 <div className="bottom">
                                     <h4 className="text-black">{pokemon.name}</h4>
-                                    <form>
-                                        <div className="create-visible switch-field ">
-{/* 
-                                            <input 
-                                                type="radio"
-                                                value="si"
-                                                checked={captured === "si"}
-                                                onChange={handleChange}
-                                                id="visible-si"
-                                                className="form-check-input"  
-                                            />
-                                            <label  className="form-check-label not-strong yes " htmlFor="visible-si" onChange={handleChange}>Si</label>
-
-                                            <input 
-                                                type="radio"
-                                                value="no" 
-                                                checked={captured === "no"}
-                                                onChange={handleChange}
-                                                id="visible-no" 
-                                                className="form-check-input"
-                                            />
-                                            <label  className="form-check-label not-strong no " htmlFor="visible-no" onChange={handleChange} >No</label> */}
-
-
-                                        </div> 
+                                    <form onSubmit={this.handleSubmit}>
+                                        <button className="btn-default btn-000 mx-0" onClick={this.getPokemon(this.props)} type="submit">CATCH</button>
                                     </form>
                                 </div>
                             </div>
                         )
                     })}
                 </div>
+                }
+                
             </div>
         )
     }
+}
 
 
 export default PokemonCard;
