@@ -27,7 +27,23 @@ class Pokemon extends Component {
         return <div  className="chip-box">
         {this.state.pokeData.types.map((ele, index) =>
             <div key={index} className="btn-default btn-000 chip">
-              {ele.type.name}
+            {ele.type.name}
+            </div>
+          )}
+          </div>
+        }
+    renderStats() {
+        return <div  className="stats-box">
+        {this.state.pokeData.stats.map((ele, index) =>
+            <div className="single-skill mb-5" key={index}>
+                <div className="label"> 
+                    <label><strong>{ele.stat.name}: </strong> </label> 
+                    <p>{ele.base_stat}</p>
+                </div>
+                <div>
+                    <input type="range" min="0" max="100" value={ele.base_stat} readOnly/>
+                </div>
+                
             </div>
           )}
           </div>
@@ -60,9 +76,37 @@ class Pokemon extends Component {
                         }
                         <div className="type-chips">
                         {
-                            this.state.init ? <div>{this.renderTypes()}</div> : <div>Loader singolo da fare</div>
+                            this.state.init ?
+                            <div>
+                                <h4>Type: </h4>
+                                {this.renderTypes()}
+                            </div> : <div>Loader singolo da fare</div>
                         }
-                        </div>
+                        </div>{/* close typechips */}
+                        {
+                            this.state.init 
+                            && 
+                            <div className="mb-5">
+                                <h4 className="mb-5" >Details:</h4> 
+                                <div>
+                                    <p>
+                                        <strong>Height: </strong> { (pokeData.height / 10) + ' m'}
+                                    </p>
+                                    <p>
+                                        <strong>Weight: </strong> { (pokeData.weight / 10) + ' kg'}
+                                    </p>
+                                </div>
+                            </div>
+                        }     
+                        {     
+                            this.state.init 
+                            &&          
+                            <div>
+                                <h4 className="mb-5">Technical Details: </h4>
+                                {this.renderStats()}
+                            </div>
+                        }
+    
                     </div>
                 </div>
             </div>

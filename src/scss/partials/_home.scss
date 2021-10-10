@@ -2,15 +2,13 @@
     background-color: $red-primary;
 }
 
-
-
-
 .bg-home {
     background-image: url('../../assets/pokeball.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     height: calc(100vh - 60px);
+    margin-top: 60px;
     .desk-60 {
         display: flex;
         justify-content: center;

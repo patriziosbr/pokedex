@@ -1,5 +1,7 @@
 .pokemon-box {
     padding: 16px;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
     .btn-default {
         margin: 16px 0;
         display: inline-block;
@@ -36,8 +38,35 @@
               background-color: #fff;
             }
         }
+        .single-skill {
+            width: 100%;
+            .label {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 4px;
+            }
+            input {
+                width: 100%;
+                margin: 0 auto;
+                display: block;
+            }
+        }
     }
 }
 @media screen and (min-width: 768px) {
-   
+    // .single-skill {
+    //     display: flex;
+    //     justify-content: space-between;
+    //     min-width: 50px;
+    //     label {
+    //         width: 120px;
+    //     }
+    //     input {
+    //         width: calc(70% - 141px);
+    //         text-align: center;
+    //     }
+    //     p {
+    //         width: 21px;
+    //     }
+    // }
 }

@@ -1,10 +1,15 @@
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 60px;
+    width: 100%;
     background-color: $dark-black;
     padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
     .logo-home {
         display: block;
         height: 50px;
