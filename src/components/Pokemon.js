@@ -53,7 +53,7 @@ class Pokemon extends Component {
         const {pokeData } = this.state;
         console.log( pokeData);
         return (
-            <div>
+            <div className="bg-poke">
                 <div className="w-80 pokemon-box">
                     <div className="mb-5">
                         <Link className="btn-default btn-000" to="/pokemons">

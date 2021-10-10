@@ -1,10 +1,11 @@
 .pokemon-box {
     padding: 16px;
     margin-top: 60px !important;
-    margin-bottom: 60px !important;
+    padding-bottom: 60px !important;
     .btn-default {
         margin: 16px 0;
         display: inline-block;
+        background-color: #fff;
         &:hover {
             background-color: rgba( $dark-grey, 0.1);
         }
@@ -13,8 +14,8 @@
         }
     }
     .singlePoke {
-        // background-color: $grey-card;
-        padding: 8px;
+        background-color: #fff;
+        padding: 16px;
         border-radius: 5px;
         box-shadow: 0px 5px 7px 0px $dark-grey;
         .detail-box {

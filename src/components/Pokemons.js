@@ -22,16 +22,18 @@ class Pokemons extends Component {
     render(){
         const {loading} = this.state;
         return(
-            <div>
-                {
-                    loading && <Loader /> 
-                }
-                {
-                    <PokemonCard pokemons={this.state.pokemons} />
-                }
+            <div className="bg-poke">
+                <div className="w-80">
+                    <h1 className="title text-black" >All Pokemons</h1>
+                    {
+                        loading && <Loader /> 
+                    }
+                    {
+                        <PokemonCard pokemons={this.state.pokemons} />
+                    }
+                </div>
             </div>
         )
     }
 }
 export default Pokemons;
-// https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png
