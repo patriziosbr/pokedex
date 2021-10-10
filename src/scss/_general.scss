@@ -3,6 +3,8 @@
 @import './partials/home';
 @import './partials/pokemonCard';
 @import './partials/pokemon';
+@import './partials/loader';
+
 
 
 * {
@@ -24,13 +26,36 @@ a {
     width: 80%;
     margin: 0 auto;
 }
+.my-5{
+   margin: 16px 0; 
+}
+.mt-5{
+   margin-top: 16px; 
+}
+.mb-5{
+   margin-bottom: 16px; 
+}
 
 .btn-default {
-    border: 1px solid rgba(255,255,255,0.5);
     border-radius: 20px;
     padding: 8px 16px;
-    color: #fff;
     margin-left: 16px;
     transition: 0.5s;
     text-align: center;
+}
+.btn-fff {
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+}
+.btn-000 {
+    border: 1px solid $text-black;
+    color: $text-black;
+}
+
+
+.bg-ball {
+    background-image: url('../assets/pokeball.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }

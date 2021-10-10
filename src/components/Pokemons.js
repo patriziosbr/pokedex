@@ -1,6 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
-import PokemonCard from './PokemonCard'
+import PokemonCard from './PokemonCard';
+import Loader from "./Loading";
 
 
 class Pokemons extends Component {
@@ -8,9 +9,9 @@ class Pokemons extends Component {
         pokemons: [],
         loading: false,
     }
-    async componentDidMount () {
+    componentDidMount () {
         this.setState({loading : true})
-        await axios.get("https://pokeapi.co/api/v2/pokemon")
+        axios.get("https://pokeapi.co/api/v2/pokemon")
         .then( res => {
             console.log(res.data.results); //all pokemons
         this.setState({pokemons : res.data.results, loading : false })       
@@ -19,11 +20,11 @@ class Pokemons extends Component {
         })
     }
     render(){
-        const {loading} = this.state
+        const {loading} = this.state;
         return(
             <div>
                 {
-                    loading && <p>Loading...</p>
+                    loading && <Loader /> 
                 }
                 {
                     <PokemonCard pokemons={this.state.pokemons} />

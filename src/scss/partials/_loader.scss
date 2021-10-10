@@ -1,0 +1,14 @@
+.slice {
+    width: 5%;
+    height: 135%;
+    position: relative;
+    top: -30px;
+    box-shadow: 35px 0 15px 5px $red-primary;
+    transform: rotate(30deg);
+    animation: bgchange 1s infinite;
+
+}
+@keyframes bgchange {
+    0%   {left: 0;}
+    100% {left: 100%;}
+}

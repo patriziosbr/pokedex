@@ -12,15 +12,15 @@ const Header = ()=>{
                     </Link>
                 </div>
                 <div className="desk-nav">
-                    <Link className="btn-default" to="/pokemons">
+                    <Link className="btn-default btn-fff" to="/pokemons">
                         <i className="fas fa-border-all"></i>
                         <small>Pokedex</small>
                     </Link>
-                    <Link className="btn-default" to="/">
+                    <Link className="btn-default btn-fff" to="/">
                         <i className="fas fa-praying-hands"></i>
                         <small>Catched</small>
                     </Link>
-                    <Link className="btn-default" to="/">
+                    <Link className="btn-default btn-fff" to="/">
                         <i className="fas fa-hands"></i>
                         <small>To Catch</small>
                     </Link>
