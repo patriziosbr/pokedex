@@ -1,6 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import SingleLoader from "./SingleLoader";
 
 const TYPE_COLORS = {
     bug: 'B1C12E',
@@ -70,7 +71,9 @@ class Pokemon extends Component {
           </div>
         }
         currentPokemon(pokename) {
-            console.log(pokename);
+            console.log(pokename.name);
+            axios.post('http://localhost:8000/catched')
+            .then()
         }
         handleSubmit(e) {
             e.preventDefault();
@@ -112,8 +115,9 @@ class Pokemon extends Component {
                             <div>
                                 <h4>Type: </h4>
                                 {this.renderTypes()}
-                            </div> : <div>Loader singolo da fare</div>
+                            </div> : <SingleLoader />
                         }
+    
                         </div>{/* close typechips */}
                         {
                             this.state.init 

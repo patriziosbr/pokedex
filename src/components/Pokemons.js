@@ -26,11 +26,14 @@ class Pokemons extends Component {
                 <div className="w-80">
                     <h1 className="title text-black" >All Pokemons</h1>
                     {
+                        loading  ? <Loader /> : <PokemonCard pokemons={this.state.pokemons} />
+                    }
+                    {/* {
                         loading && <Loader /> 
                     }
                     {
                         <PokemonCard pokemons={this.state.pokemons} />
-                    }
+                    } */}
                 </div>
             </div>
         )
