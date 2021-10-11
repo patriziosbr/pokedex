@@ -5,19 +5,9 @@ class PokemonCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...props,
-            pippo : []
         };
 
     }
-    handleSubmit(e) {
-        e.preventDefault();
-        console.log('Hai cliccato Invia.');
-        
-
-      }
-
-
     render() {
         return(
             <div>

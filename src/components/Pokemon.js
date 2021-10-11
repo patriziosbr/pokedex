@@ -31,7 +31,7 @@ class Pokemon extends Component {
             loading: false,
             pokeData: [],
             init: 0,
-            pokeName : ''
+            postPoke : ''
 
         }
     }
@@ -76,17 +76,16 @@ class Pokemon extends Component {
             e.preventDefault();
             console.log('Hai cliccato Invia.');
         }
-        currentPokemon(pokename) {
-                console.log(pokename.name); //ok pokeName
-                console.log(this.state.pokeData); //this pokemons
-                // axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename.name}`)
-                // .then( res => {
-                //     console.log(res.data); //this pokemons
-                //     console.log(this.state.pokeData); //all pokemons
-                // // this.setState({pokemons : res.data.results, loading : false })       
-                // }).catch( err => {
-                //     console.log('axios error', err);
-                // })
+        currentPokemon() {
+                // console.log(this.state.pokeData); //this pokemons
+                let postPoke = this.state.pokeData;
+                console.log(postPoke);
+                axios.post('http://localhost:8000/catched/', postPoke)
+                .then( res => {
+                    console.log(res.data); //this pokemons
+                }).catch( err => {
+                    console.log('axios error post', err);
+                })
 
         }
     
@@ -116,7 +115,7 @@ class Pokemon extends Component {
                         {
                             this.state.init &&
                             <form onSubmit={this.handleSubmit}>
-                                <button className="btn-default btn-000 mx-0" onClick={() => {this.currentPokemon(pokeData) }} type="submit">CATCH</button>
+                                <button className="btn-default btn-000 mx-0" onClick={() => {this.currentPokemon() }} type="submit">CATCH</button>
                             </form> 
                         }
                         <div className="type-chips">
