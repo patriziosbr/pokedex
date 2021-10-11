@@ -30,7 +30,9 @@ class Pokemon extends Component {
         this.state = {
             loading: false,
             pokeData: [],
-            init: 0
+            init: 0,
+            pokeName : ''
+
         }
     }
     async componentDidMount () {
@@ -70,15 +72,23 @@ class Pokemon extends Component {
           )}
           </div>
         }
-        currentPokemon(pokename) {
-            console.log(pokename.name);
-            axios.post('http://localhost:8000/catched')
-            .then()
-        }
         handleSubmit(e) {
             e.preventDefault();
             console.log('Hai cliccato Invia.');
-          }
+        }
+        currentPokemon(pokename) {
+                console.log(pokename.name); //ok pokeName
+                console.log(this.state.pokeData); //this pokemons
+                // axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename.name}`)
+                // .then( res => {
+                //     console.log(res.data); //this pokemons
+                //     console.log(this.state.pokeData); //all pokemons
+                // // this.setState({pokemons : res.data.results, loading : false })       
+                // }).catch( err => {
+                //     console.log('axios error', err);
+                // })
+
+        }
     
     render() {
         const {pokeData } = this.state;
