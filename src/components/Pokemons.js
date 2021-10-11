@@ -9,9 +9,9 @@ class Pokemons extends Component {
         pokemons: [],
         loading: false,
     }
-    componentDidMount () {
+    async componentDidMount () {
         this.setState({loading : true})
-        axios.get("https://pokeapi.co/api/v2/pokemon")
+        await axios.get("https://pokeapi.co/api/v2/pokemon")
         .then( res => {
             // console.log(res.data.results); //all pokemons
         this.setState({pokemons : res.data.results, loading : false })       

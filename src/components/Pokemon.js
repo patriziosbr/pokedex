@@ -69,10 +69,17 @@ class Pokemon extends Component {
           )}
           </div>
         }
+        currentPokemon(pokename) {
+            console.log(pokename);
+        }
+        handleSubmit(e) {
+            e.preventDefault();
+            console.log('Hai cliccato Invia.');
+          }
     
     render() {
         const {pokeData } = this.state;
-        console.log( pokeData);
+        // console.log( pokeData); //array filled
         return (
             <div className="bg-poke">
                 <div className="w-80 pokemon-box">
@@ -91,9 +98,13 @@ class Pokemon extends Component {
                                 <div className="detail-img">
                                     <img src={`https://img.pokemondb.net/artwork/vector/large/${pokeData.name}.png`} alt={pokeData.name}/>
                                 </div>
-                                
                             </div> : ''
-
+                        }
+                        {
+                            this.state.init &&
+                            <form onSubmit={this.handleSubmit}>
+                                <button className="btn-default btn-000 mx-0" onClick={() => {this.currentPokemon(pokeData) }} type="submit">CATCH</button>
+                            </form> 
                         }
                         <div className="type-chips">
                         {

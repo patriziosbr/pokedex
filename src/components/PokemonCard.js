@@ -13,12 +13,9 @@ class PokemonCard extends Component {
     handleSubmit(e) {
         e.preventDefault();
         console.log('Hai cliccato Invia.');
+        
 
       }
-    getPokemon(props) {
-        this.pippo = props
-        console.log(this.pippo);
-    }
 
 
     render() {
@@ -41,7 +38,7 @@ class PokemonCard extends Component {
                                 <div className="bottom">
                                     <h4 className="text-black">{pokemon.name}</h4>
                                     <form onSubmit={this.handleSubmit}>
-                                        <button className="btn-default btn-000 mx-0" onClick={this.getPokemon(this.props)} type="submit">CATCH</button>
+                                        <button className="btn-default btn-000 mx-0"  type="submit">CATCH</button>
                                     </form>
                                 </div>
                             </div>
