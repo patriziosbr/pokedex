@@ -39,6 +39,13 @@ a {
 .mb-5{
    margin-bottom: 16px; 
 }
+.form-catch {
+    display: flex;
+    justify-content: center;
+    .btn-catch {
+        width: 80%;
+    }
+}
 
 .btn-default {
     border-radius: 20px;
@@ -46,6 +53,7 @@ a {
     margin-left: 16px;
     transition: 0.5s;
     text-align: center;
+    font-weight: 800;
 }
 .btn-fff {
     border: 1px solid rgba(255,255,255,0.5);
@@ -54,6 +62,12 @@ a {
 .btn-000 {
     border: 1px solid $text-black;
     color: $text-black;
+}
+.btn-catched {
+    width: 80%;
+    border: 1px solid $red-primary;
+    color: $red-primary;
+    background-color: $grey-card !important;
 }
 
 .active {

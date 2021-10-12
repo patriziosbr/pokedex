@@ -31,7 +31,8 @@ class Pokemon extends Component {
             loading: false,
             pokeData: [],
             init: 0,
-            postPoke : ''
+            postPoke : '',
+            catched: false
 
         }
     }
@@ -76,13 +77,14 @@ class Pokemon extends Component {
             e.preventDefault();
             console.log('Hai cliccato Invia.');
         }
-        currentPokemon() {
+        catchPokemon() {
                 // console.log(this.state.pokeData); //this pokemons
                 let postPoke = this.state.pokeData;
                 console.log(postPoke);
                 axios.post('http://localhost:8000/catched/', postPoke)
                 .then( res => {
                     console.log(res.data); //this pokemons
+                    this.setState({ catched : true });
                 }).catch( err => {
                     console.log('axios error post', err);
                 })
@@ -114,8 +116,8 @@ class Pokemon extends Component {
                         }
                         {
                             this.state.init &&
-                            <form onSubmit={this.handleSubmit}>
-                                <button className="btn-default btn-000 mx-0" onClick={() => {this.currentPokemon() }} type="submit">CATCH</button>
+                            <form className="form-catch" onSubmit={this.handleSubmit}>
+                                <button className={ this.state.catched ? 'btn-default btn-000 mb-5 btn-catched' : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemon() }} type="submit">{this.state.catched ? 'CATCHED' : 'CATCH'}</button>
                             </form> 
                         }
                         <div className="type-chips">
