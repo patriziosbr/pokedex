@@ -13,7 +13,7 @@ class Catched extends Component {
         this.setState({loading : true})
         await axios.get("http://localhost:8000/catched")
         .then( res => {
-            console.log(res.data); //all catched
+            // console.log(res.data); //all catched
         this.setState({catched : res.data, loading : false })       
         }).catch( err => {
             console.log('axios error', err);

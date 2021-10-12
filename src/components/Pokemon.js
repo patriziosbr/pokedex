@@ -23,7 +23,6 @@ const TYPE_COLORS = {
     steel: 'B5B5C3',
     water: '3295F6'
   };
-
 class Pokemon extends Component {
     constructor(props) {
         super(props);
@@ -32,22 +31,23 @@ class Pokemon extends Component {
             pokeData: [],
             init: 0,
             postPoke : '',
-            catched: false
-
+            catchedArr: []
         }
     }
-    async componentDidMount () {
-        this.setState({loading : true})
-        await axios.get(`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.name}`)
-        .then( res => {
-            // console.log(res.data); //all info single poke
-            // console.log(res.data.types);
-        this.setState({pokeData : res.data, loading : false, init: 1 });
-        }).catch( err => {
-            console.log('axios error', err);
-        })
+    componentDidMount () {
+        Promise.all
+        ([
+            axios.get(`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.name}`),
+            axios.get('http://localhost:8000/catched/')
+        ]).then(([res, getCatched]) => {
+            console.log(res.data);
+            console.log(getCatched);
+            this.setState({pokeData : res.data, catchedArr : getCatched.data, loading : false, 
+                init: 1
+            })
+        }) 
     }
-    renderTypes() {
+    renderTypes() { 
         return <div  className="chip-box">
         {this.state.pokeData.types.map((ele, index) =>
             <div key={index} className="btn-default btn-000 chip" 
@@ -78,22 +78,21 @@ class Pokemon extends Component {
             console.log('Hai cliccato Invia.');
         }
         catchPokemon() {
-                // console.log(this.state.pokeData); //this pokemons
-                let postPoke = this.state.pokeData;
-                console.log(postPoke);
-                axios.post('http://localhost:8000/catched/', postPoke)
-                .then( res => {
-                    console.log(res.data); //this pokemons
-                    this.setState({ catched : true });
-                }).catch( err => {
-                    console.log('axios error post', err);
-                })
-
+            // console.log(this.state.pokeData); //the pokemon
+            let postPoke = this.state.pokeData;
+            axios.post('http://localhost:8000/catched/', postPoke)
+            .then( res => {
+                console.log('res axios senno è triste', res.data); //the pokemon
+            }).catch( err => {
+                console.log('axios error Post', err);
+                //alert in extremis
+            })
         }
-    
     render() {
-        const {pokeData } = this.state;
+        const {pokeData, catchedArr, loading } = this.state;
         // console.log( pokeData); //array filled
+        console.log( pokeData.name);
+        console.log( catchedArr);
         return (
             <div className="bg-poke">
                 <div className="w-80 pokemon-box">
@@ -104,7 +103,6 @@ class Pokemon extends Component {
                         </Link>
                     </div>
                     <div className="singlePoke">
-                    
                         {
                             pokeData.name ? 
                             <div className="detail-box">
@@ -115,9 +113,9 @@ class Pokemon extends Component {
                             </div> : ''
                         }
                         {
-                            this.state.init &&
-                            <form className="form-catch" onSubmit={this.handleSubmit}>
-                                <button className={ this.state.catched ? 'btn-default btn-000 mb-5 btn-catched' : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemon() }} type="submit">{this.state.catched ? 'CATCHED' : 'CATCH'}</button>
+                            !loading &&
+                            <form className="form-catch" >
+                                <button className={ catchedArr.find( x => x.name === pokeData.name ) ? 'btn-default btn-000 mb-5 btn-catched' : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemon() }} type="submit">{ catchedArr.find( x => x.name === pokeData.name ) ? 'CATCHED' : 'CATCH'}</button>
                             </form> 
                         }
                         <div className="type-chips">
@@ -131,7 +129,7 @@ class Pokemon extends Component {
     
                         </div>{/* close typechips */}
                         {
-                            this.state.init 
+                            !loading 
                             && 
                             <div className="mb-5">
                                 <h4 className="mb-5" >Details:</h4> 
