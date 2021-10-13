@@ -51,7 +51,7 @@ class PokemonCatch extends Component {
                                 </Link>
                                 <div className="bottom">
                                     <form onSubmit={this.handleSubmit}>
-                                        <button className="btn-default btn-000 mx-0" disabled>CATCHED</button>
+                                        <button className="btn-default btn-000 btn-catched" disabled>CATCHED</button>
                                     </form>
                                 </div>
                             </div>

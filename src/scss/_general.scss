@@ -43,7 +43,7 @@ a {
     display: flex;
     justify-content: center;
     .btn-catch {
-        width: 80%;
+        margin-left: 0;
     }
 }
 
@@ -64,9 +64,10 @@ a {
     color: $text-black;
 }
 .btn-catched {
-    width: 50%;
-    border: 1px solid $red-primary;
+    margin-left: 0;
+    border: 1px solid $red-primary !important;
     color: $red-primary;
+    cursor: not-allowed;
 }
 
 .active {

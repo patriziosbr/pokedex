@@ -31,18 +31,22 @@ class Pokemon extends Component {
             pokeData: [],
             init: 0,
             postPoke : '',
-            catchedArr: [],
+            catchedArr : [],
+            catchedFromAll : [] 
+
         }
     }
     componentDidMount () {
         Promise.all
         ([
             axios.get(`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.name}`),
-            axios.get('http://localhost:8000/catched/')
-        ]).then(([res, getCatched]) => {
+            axios.get('http://localhost:8000/catched/'),
+            axios.get('http://localhost:8000/catchFromAll/'),
+
+        ]).then(([res, getCatched, catchFromAll]) => {
             // console.log(res.data);
             // console.log(getCatched);
-            this.setState({pokeData : res.data, catchedArr : getCatched.data, loading : false, 
+            this.setState({pokeData : res.data, catchedArr : getCatched.data, catchedFromAll : catchFromAll.data, loading : false, 
                 init: 1
             })
         }) 

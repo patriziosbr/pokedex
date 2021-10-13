@@ -48,10 +48,15 @@ class PokemonCard extends Component {
                                     </div>
                                 </Link>
                                 <div className="bottom">
-                                    <form onSubmit={this.handleSubmit}>
+                                    {/* <form onSubmit={this.handleSubmit}>
                                         <button className="btn-default btn-000 mx-0" type="submit" onClick={() => {this.catchPokemonFromAll(pokemon.name) }}>CATCH</button>
+                                    </form> */}
+                              
+                                    <form className="form-catch" >
+                                        <button className={ this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'btn-default btn-000 mb-5 btn-catched' : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemonFromAll(pokemon.name) }} type="submit" disabled={ this.props.catchFromAllTest.find( x => x.name === pokemon.name )}>{ this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'CATCHED' : 'CATCH'}</button>
                                     </form>
-                                </div>
+ 
+                                    </div>
                             </div>
                         )
                     })}
