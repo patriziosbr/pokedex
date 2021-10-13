@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 
-class PokemonCard extends Component {
+class PokemonCatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,12 +30,34 @@ class PokemonCard extends Component {
         e.preventDefault();
     }
     render() {
+        
         return(
             <div>
                 {
                     this.props.pokemons.length > 0 && 
                     <div  className="card-box">
                     {this.props.pokemons.map((pokemon, key) => {
+                        return (
+                            <div className="card" key={key}>
+                                
+                                <Link
+                                to={{
+                                    pathname: `pokemon/${pokemon.name}`
+                                }}>
+                                    <h3 className="text-black mt-5">{pokemon.name}</h3>
+                                    <div className="img-card">
+                                        <img src={`https://img.pokemondb.net/artwork/vector/large/${pokemon.name}.png`} alt={pokemon.name}/>
+                                    </div>
+                                </Link>
+                                <div className="bottom">
+                                    <form onSubmit={this.handleSubmit}>
+                                        <button className="btn-default btn-000 mx-0" disabled>CATCHED</button>
+                                    </form>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    {/* {this.props.pokeFromAll.map((pokemon, key) => {
                         return (
                             <div className="card" key={key}>
                                 <Link
@@ -49,12 +71,12 @@ class PokemonCard extends Component {
                                 </Link>
                                 <div className="bottom">
                                     <form onSubmit={this.handleSubmit}>
-                                        <button className="btn-default btn-000 mx-0" type="submit" onClick={() => {this.catchPokemonFromAll(pokemon.name) }}>CATCH</button>
+                                        <button className="btn-default btn-000 mx-0" disabled>CATCHED</button>
                                     </form>
                                 </div>
                             </div>
                         )
-                    })}
+                    })} */}
                     </div>
                 }
                 
@@ -64,4 +86,4 @@ class PokemonCard extends Component {
 }
 
 
-export default PokemonCard;
+export default PokemonCatch;

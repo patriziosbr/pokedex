@@ -8,19 +8,40 @@ class Pokemons extends Component {
     state= {
         pokemons: [],
         loading: false,
+        // defineCatched: [],
+        catchedFromAll: [],
+        catchedDeatil: []
     }
     async componentDidMount () {
-        this.setState({loading : true})
-        await axios.get("https://pokeapi.co/api/v2/pokemon")
-        .then( res => {
-            // console.log(res.data.results); //all pokemons
-        this.setState({pokemons : res.data.results, loading : false })       
-        }).catch( err => {
-            console.log('axios error', err);
+        this.setState({loading : true});
+        await Promise.all
+        ([
+            axios.get("https://pokeapi.co/api/v2/pokemon"),
+            axios.get('http://localhost:8000/catchFromAll/'),
+            axios.get('http://localhost:8000/catched/'),
+        ]).then(([resAll, catchFromAll , getCatched]) => {
+            this.setState({ pokemons : resAll.data.results, catchedFromAll : catchFromAll.data, catchedDeatil : getCatched.data, loading : false,
+            })
+        }).catch(err => {
+            console.log('3 promise in pokemons err', err);
         })
     }
+    // async componentDidMount () {
+    //     this.setState({loading : true})
+    //     await axios.get("https://pokeapi.co/api/v2/pokemon")
+    //     .then( res => {
+    //         // console.log(res.data.results); //all pokemons
+    //     this.setState({pokemons : res.data.results, loading : false })       
+    //     }).catch( err => {
+    //         console.log('axios error', err);
+    //     })
+    // }
     render(){
-        const {loading} = this.state;
+
+        const { loading, catchedFromAll, catchedDeatil } = this.state;
+        console.log(catchedFromAll);
+        console.log(catchedDeatil);
+
         return(
             <div className="bg-poke">
                 <div className="w-80">
