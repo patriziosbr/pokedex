@@ -31,7 +31,7 @@ class Pokemon extends Component {
             pokeData: [],
             init: 0,
             postPoke : '',
-            catchedArr: []
+            catchedArr: [],
         }
     }
     componentDidMount () {
@@ -40,8 +40,8 @@ class Pokemon extends Component {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.name}`),
             axios.get('http://localhost:8000/catched/')
         ]).then(([res, getCatched]) => {
-            console.log(res.data);
-            console.log(getCatched);
+            // console.log(res.data);
+            // console.log(getCatched);
             this.setState({pokeData : res.data, catchedArr : getCatched.data, loading : false, 
                 init: 1
             })
@@ -73,10 +73,6 @@ class Pokemon extends Component {
           )}
           </div>
         }
-        handleSubmit(e) {
-            e.preventDefault();
-            console.log('Hai cliccato Invia.');
-        }
         catchPokemon() {
             // console.log(this.state.pokeData); //the pokemon
             let postPoke = this.state.pokeData;
@@ -91,8 +87,8 @@ class Pokemon extends Component {
     render() {
         const {pokeData, catchedArr, loading } = this.state;
         // console.log( pokeData); //array filled
-        console.log( pokeData.name);
-        console.log( catchedArr);
+        // console.log( pokeData.name);
+        // console.log( catchedArr);
         return (
             <div className="bg-poke">
                 <div className="w-80 pokemon-box">

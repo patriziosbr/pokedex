@@ -6,7 +6,6 @@ class PokemonCard extends Component {
         super(props);
         this.state = {
         };
-
     }
     render() {
         return(
@@ -21,12 +20,13 @@ class PokemonCard extends Component {
                                 to={{
                                     pathname: `pokemon/${pokemon.name}`
                                 }}>
+                                    <h3 className="text-black mt-5">{pokemon.name}</h3>
                                     <div className="img-card">
+
                                         <img src={`https://img.pokemondb.net/artwork/vector/large/${pokemon.name}.png`} alt={pokemon.name}/>
                                     </div>
                                 </Link>
                                 <div className="bottom">
-                                    <h4 className="text-black">{pokemon.name}</h4>
                                     <form onSubmit={this.handleSubmit}>
                                         <button className="btn-default btn-000 mx-0"  type="submit">CATCH</button>
                                     </form>
