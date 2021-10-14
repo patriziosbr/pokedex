@@ -7,6 +7,7 @@ class PokemonCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            pokeAllTest : []
         };
     }
     catchPokemonFromAll(thisPoke) {
@@ -24,8 +25,15 @@ class PokemonCard extends Component {
         }).catch( err => {
             console.log('axios error Post in pokemonCard', err);
             //alert in extremis
-        })
+        });
+        this.unionBy(this.state.catchFromAllTest, this.state.catchedDeatilTest, x => x.name);
     }
+    unionBy = (a, b, fn) => {
+        const s = new Set(a.map(fn));
+        let cleanPokemon = Array.from(new Set([...a, ...b.filter(x => !s.has(fn(x)))]));
+        console.log(cleanPokemon);
+        this.setState({pokeAllTest : cleanPokemon})
+      };
     handleSubmit(e){
         e.preventDefault();
     }
@@ -48,15 +56,16 @@ class PokemonCard extends Component {
                                     </div>
                                 </Link>
                                 <div className="bottom">
-                                    {/* <form onSubmit={this.handleSubmit}>
-                                        <button className="btn-default btn-000 mx-0" type="submit" onClick={() => {this.catchPokemonFromAll(pokemon.name) }}>CATCH</button>
-                                    </form> */}
-                              
                                     <form className="form-catch" >
-                                        <button className={ this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'btn-default btn-000 mb-5 btn-catched' : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemonFromAll(pokemon.name) }} type="submit" disabled={ this.props.catchFromAllTest.find( x => x.name === pokemon.name )}>{ this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'CATCHED' : 'CATCH'}</button>
+                                        <button className={ 
+                                            this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'btn-default btn-000 mb-5 btn-catched'
+                                            :  this.props.catchedDeatilTest.find( x => x.name === pokemon.name ) ? 'btn-default btn-000 mb-5 btn-catched'
+                                            : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemonFromAll(pokemon.name) }} type="submit" disabled={ this.props.catchFromAllTest.find( x => x.name === pokemon.name )}>
+                                            { this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'CATCHED' 
+                                            :  this.props.catchedDeatilTest.find( x => x.name === pokemon.name ) ? 'CATCHED'
+                                            : 'CATCH'}</button>
                                     </form>
- 
-                                    </div>
+                                </div>
                             </div>
                         )
                     })}

@@ -32,8 +32,7 @@ class Pokemon extends Component {
             init: 0,
             postPoke : '',
             catchedArr : [],
-            catchedFromAll : [] 
-
+            catchedFromAll : [],
         }
     }
     componentDidMount () {
@@ -42,15 +41,20 @@ class Pokemon extends Component {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.name}`),
             axios.get('http://localhost:8000/catched/'),
             axios.get('http://localhost:8000/catchFromAll/'),
-
         ]).then(([res, getCatched, catchFromAll]) => {
-            // console.log(res.data);
-            // console.log(getCatched);
             this.setState({pokeData : res.data, catchedArr : getCatched.data, catchedFromAll : catchFromAll.data, loading : false, 
                 init: 1
             })
-        }) 
+        });
+        this.unionBy(this.state.catchedArr, this.state.catchedFromAll, x => x.name);
     }
+    unionBy = (a, b, fn) => {
+        const s = new Set(a.map(fn));
+        let cleanPokemon = Array.from(new Set([...a, ...b.filter(x => !s.has(fn(x)))]));
+        console.log(cleanPokemon);
+        this.setState({uniqueArrDett : cleanPokemon})
+      };
+
     renderTypes() { 
         return <div  className="chip-box">
         {this.state.pokeData.types.map((ele, index) =>
@@ -72,7 +76,6 @@ class Pokemon extends Component {
                 <div>
                     <input type="range" min="0" max="100" value={ele.base_stat} readOnly/>
                 </div>
-                
             </div>
           )}
           </div>
@@ -89,7 +92,7 @@ class Pokemon extends Component {
             })
         }
     render() {
-        const {pokeData, catchedArr, loading } = this.state;
+        const {pokeData, catchedArr, loading, catchedFromAll } = this.state;
         // console.log( pokeData); //array filled
         // console.log( pokeData.name);
         // console.log( catchedArr);
@@ -113,10 +116,18 @@ class Pokemon extends Component {
                             </div> : ''
                         }
                         {
-                            !loading &&
-                            <form className="form-catch" >
-                                <button className={ catchedArr.find( x => x.name === pokeData.name ) ? 'btn-default btn-000 mb-5 btn-catched' : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemon() }} type="submit">{ catchedArr.find( x => x.name === pokeData.name ) ? 'CATCHED' : 'CATCH'}</button>
-                            </form> 
+                        !loading &&
+                        <form className="form-catch" >
+                            <button className={ 
+                                catchedArr.find( x => x.name === pokeData.name ) ? 'btn-default btn-000 mb-5 btn-catched'
+                                :  catchedFromAll.find( x => x.name === pokeData.name ) ? 'btn-default btn-000 mb-5 btn-catched'
+                                : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemonFromAll(pokeData.name) }} type="submit" disabled={ catchedArr.find( x => x.name === pokeData.name )}>
+                                { catchedArr.find( x => x.name === pokeData.name ) ? 'CATCHED' 
+                                :  catchedFromAll.find( x => x.name === pokeData.name ) ? 'CATCHED'
+                                : 'CATCH'}</button>
+                        </form>
+
+                            
                         }
                         <div className="type-chips">
                         {

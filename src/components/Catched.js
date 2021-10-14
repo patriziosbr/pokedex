@@ -23,15 +23,12 @@ class Catched extends Component {
         }).catch(err => {
             console.log('2 promise in catched err', err);
         });
-
         this.unionBy(this.state.catched, this.state.catchedFromAll, x => x.name);
-
     }
 
     unionBy = (a, b, fn) => {
         const s = new Set(a.map(fn));
         let cleanPokemon = Array.from(new Set([...a, ...b.filter(x => !s.has(fn(x)))]));
-        console.log(cleanPokemon);
         this.setState({finalArr : cleanPokemon})
       };
     // async componentDidMount () {
