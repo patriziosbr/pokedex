@@ -7,9 +7,6 @@
         display: inline-block;
         background-color: #fff;
         cursor: pointer;
-        &:hover {
-            background-color: rgba( $dark-grey, 0.1);
-        }
         i {
             margin-right: 8px;
         }

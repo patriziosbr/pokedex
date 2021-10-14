@@ -60,7 +60,7 @@ class PokemonCard extends Component {
                                         <button className={ 
                                             this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'btn-default btn-000 mb-5 btn-catched'
                                             :  this.props.catchedDeatilTest.find( x => x.name === pokemon.name ) ? 'btn-default btn-000 mb-5 btn-catched'
-                                            : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemonFromAll(pokemon.name) }} type="submit" disabled={ this.props.catchFromAllTest.find( x => x.name === pokemon.name )}>
+                                            : 'btn-default btn-000 mb-5 btn-catch btn-hover'} onClick={() => {this.catchPokemonFromAll(pokemon.name) }} type="submit" disabled={ this.props.catchFromAllTest.find( x => x.name === pokemon.name )}>
                                             { this.props.catchFromAllTest.find( x => x.name === pokemon.name ) ? 'CATCHED' 
                                             :  this.props.catchedDeatilTest.find( x => x.name === pokemon.name ) ? 'CATCHED'
                                             : 'CATCH'}</button>

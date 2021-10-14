@@ -68,12 +68,12 @@ a {
     margin-left: 0;
     border: 1px solid $red-primary !important;
     color: $red-primary;
-    cursor: not-allowed;
+    cursor: pointer;
 }
 .btn-hover:hover {
-    background-color: $dark-grey;
+    background-color: rgba( $dark-grey, 0.1);
     cursor: pointer;
-    color: #fff;
+    color: $text-black;
 }
 
 .active {
