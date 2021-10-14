@@ -117,14 +117,11 @@ class Pokemon extends Component {
                         }
                         {
                         !loading &&
-                        // <form className="form-catch" >
-                        //     <button className={ catchedArr.find( x => x.name === pokeData.name ) ? 'btn-default btn-000 mb-5 btn-catched' : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemon() }} type="submit">{ catchedArr.find( x => x.name === pokeData.name ) ? 'CATCHED' : 'CATCH'}</button>
-                        // </form> 
                         <form className="form-catch" >
                             <button className={ 
                                 catchedArr.find( x => x.name === pokeData.name ) ? 'btn-default btn-000 mb-5 btn-catched'
                                 :  catchedFromAll.find( x => x.name === pokeData.name ) ? 'btn-default btn-000 mb-5 btn-catched'
-                                : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemonFromAll(pokeData.name) }} type="submit" disabled={ catchedArr.find( x => x.name === pokeData.name )}>
+                                : 'btn-default btn-000 mb-5 btn-catch'} onClick={() => {this.catchPokemon() }} type="submit" disabled={ catchedArr.find( x => x.name === pokeData.name )}>
                                 { catchedArr.find( x => x.name === pokeData.name ) ? 'CATCHED' 
                                 :  catchedFromAll.find( x => x.name === pokeData.name ) ? 'CATCHED'
                                 : 'CATCH'}</button>

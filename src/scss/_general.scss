@@ -54,6 +54,7 @@ a {
     transition: 0.5s;
     text-align: center;
     font-weight: 800;
+    cursor: pointer;
 }
 .btn-fff {
     border: 1px solid rgba(255,255,255,0.5);
@@ -68,6 +69,11 @@ a {
     border: 1px solid $red-primary !important;
     color: $red-primary;
     cursor: not-allowed;
+}
+.btn-hover:hover {
+    background-color: $dark-grey;
+    cursor: pointer;
+    color: #fff;
 }
 
 .active {
