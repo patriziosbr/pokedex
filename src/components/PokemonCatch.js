@@ -2,7 +2,6 @@ import {Link} from "react-router-dom";
 import React, { Component } from "react";
 import axios from "axios";
 
-
 class PokemonCatch extends Component {
     constructor(props) {
         super(props);
@@ -38,8 +37,7 @@ class PokemonCatch extends Component {
                     <div  className="card-box">
                     {this.props.pokemons.map((pokemon, key) => {
                         return (
-                            <div className="card" key={key}>
-                                
+                            <div className="card" key={key}>  
                                 <Link
                                 to={{
                                     pathname: `pokemon/${pokemon.name}`
@@ -57,26 +55,7 @@ class PokemonCatch extends Component {
                             </div>
                         )
                     })}
-                    {/* {this.props.pokeFromAll.map((pokemon, key) => {
-                        return (
-                            <div className="card" key={key}>
-                                <Link
-                                to={{
-                                    pathname: `pokemon/${pokemon.name}`
-                                }}>
-                                    <h3 className="text-black mt-5">{pokemon.name}</h3>
-                                    <div className="img-card">
-                                        <img src={`https://img.pokemondb.net/artwork/vector/large/${pokemon.name}.png`} alt={pokemon.name}/>
-                                    </div>
-                                </Link>
-                                <div className="bottom">
-                                    <form onSubmit={this.handleSubmit}>
-                                        <button className="btn-default btn-000 mx-0" disabled>CATCHED</button>
-                                    </form>
-                                </div>
-                            </div>
-                        )
-                    })} */}
+
                     </div>
                 }
                 
