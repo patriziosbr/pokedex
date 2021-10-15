@@ -46,7 +46,7 @@ class Catched extends Component {
         return(
             <div className="bg-poke">
                 <div className="w-80">
-                    <h1 className="title text-black" >All Pokemons Catched</h1>
+                    <h1 className="title text-black" >All Catched Pokemons </h1>
                     {
                         loading  ? <Loader /> : <PokemonCatch pokemons={this.state.finalArr} />
                     }

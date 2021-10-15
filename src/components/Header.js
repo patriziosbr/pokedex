@@ -33,7 +33,7 @@ const Header = ()=>{
                         <i className="fas fa-praying-hands"></i>
                         <small>Catched</small>
                     </Link>
-                    <Link className={splitLocation[1] === "xxx" ? "active btn-default btn-fff" : "btn-default btn-fff"} to="/">
+                    <Link className={splitLocation[1] === "tocatch" ? "active btn-default btn-fff" : "btn-default btn-fff"} to="/tocatch">
                         <i className="fas fa-hands"></i>
                         <small>To Catch</small>
                     </Link>
@@ -54,7 +54,7 @@ const Header = ()=>{
                     <i className="fas fa-praying-hands"></i>
                    <small>Catched</small>
                 </Link>
-                <Link className={splitLocation[1] === "xxx" ? "active" : ""} to="/">
+                <Link className={splitLocation[1] === "tocatch" ? "active" : ""} to="/tocatch">
                     <i className="fas fa-hands"></i>
                    <small>To Catch</small>
                 </Link>
