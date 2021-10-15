@@ -7,7 +7,7 @@ class PokemonCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // pokeAllTest : []
+            
         };
     }
     catchPokemonFromAll(thisPoke) {
@@ -19,21 +19,14 @@ class PokemonCard extends Component {
             if( this.props.pokemons.includes(res.data.name))  {
                 return
             }
-            // console.log('res axios senno è triste in pokemonCard', res.data); //the pokemon
         }).catch( err => {
             console.log('axios error Post in pokemonCard', err);
             //alert in extremis
         });
-        // this.unionBy(this.state.catchFromAllTest, this.state.catchedDeatilTest, x => x.name);
     }
-    // unionBy = (a, b, fn) => {
-    //     const s = new Set(a.map(fn));
-    //     let cleanPokemon = Array.from(new Set([...a, ...b.filter(x => !s.has(fn(x)))]));
-    //     // console.log(cleanPokemon);
-    //     this.setState({pokeAllTest : cleanPokemon})
-    //   };
+
     render() {
-        return(
+        return (
             <div>
                 {
                     this.props.pokemons.length > 0 && 
