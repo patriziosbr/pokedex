@@ -1,6 +1,6 @@
 # Getting Started with my pokedex
 
-dowload the project open VSC or any other text editor you like
+dowload the project open it in VSC or any other text editor you like
 
 open new terminal and run:
 
