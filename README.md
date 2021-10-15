@@ -10,3 +10,7 @@ open another terminal and run:
 
 ### `npx json-server --watch data/db.json --port 8000`
 
+go in your local:
+
+#### http://localhost:3000
+
