@@ -1,11 +1,25 @@
 import {Link} from "react-router-dom";
 import React, { Component } from "react";
+import axios from "axios";
 
 class PokemonCatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            toDelete : []
         };
+    }
+
+    releasePoke (id, e ) {
+        Promise.all ([
+            axios.delete(`http://localhost:8000/catched/${id}`),
+            axios.delete(`http://localhost:8000/catchFromAll/${id}`),
+        ]).then(res => {
+            console.log(res.data);
+            alert('are you sure you want release this pokemon? this action cannot be undone')
+            const toDelete = this.props.pokemons.filter(item => item.id !== id)
+            this.setState({ toDelete })
+        });
     }
     render() {
         
@@ -27,8 +41,12 @@ class PokemonCatch extends Component {
                                     </div>
                                 </Link>
                                 <div className="bottom">
-                                    <form>
+                                    <form action="">
                                         <button className="btn-default btn-000 btn-catched" disabled>CATCHED</button>
+                                        <button 
+                                        className="btn-default btn-000 btn-release" 
+                                        onClick={(e) => {this.releasePoke( pokemon.id, e )}}
+                                        type="submit">RELEASE</button>
                                     </form>
                                 </div>
                             </div>

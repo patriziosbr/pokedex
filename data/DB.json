@@ -1,9 +1,4 @@
 {
   "catched": [],
-  "catchFromAll": [
-    {
-      "name": "bulbasaur",
-      "id": 1
-    }
-  ]
+  "catchFromAll": []
 }
