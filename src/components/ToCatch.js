@@ -55,7 +55,7 @@ class ToCatch extends Component {
                 <div className="w-80">
                     <h1 className="title text-black" >All Pokemons to Catch</h1>
                     {
-                        loading  ? <Loader /> : <PokemonToCatch pokemons={this.state.filtredToCatch} />
+                        loading  ? <Loader /> : <PokemonToCatch pokemons={this.state.filtredToCatch} allPoke={this.state.getAll}/>
                     }
                 </div>
             </div>

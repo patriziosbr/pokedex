@@ -1,22 +1,11 @@
 import {Link} from "react-router-dom";
 import React, { Component } from "react";
-import axios from "axios";
 
 class PokemonToCatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            allPoke : []
         };
-    }
-    async componentDidMount() {
-        await axios.get("https://pokeapi.co/api/v2/pokemon")
-        .then(res => {
-            console.log(res);
-            this.setState({allPoke : res.data.results})
-        }).catch(err => {
-            console.log('err in to catch',err);
-        })
     }
     render() {
         return(
@@ -24,7 +13,7 @@ class PokemonToCatch extends Component {
                 {
                     this.props.pokemons.length === 0 && 
                     <div  className="card-box">
-                    {this.state.allPoke.map((pokemon, key) => {
+                    {this.props.allPoke.map((pokemon, key) => {
                         return (
                             <div className="card" key={key}>  
                                 <Link
@@ -45,8 +34,6 @@ class PokemonToCatch extends Component {
 
                     </div>
                 }
-
-
                 {
                     this.props.pokemons.length > 0 && 
                     <div  className="card-box">
