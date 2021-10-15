@@ -70,6 +70,18 @@ a {
     color: $red-primary;
     cursor: pointer;
 }
+.btn-release {
+    margin-left: 0;
+    margin-top: 16px;
+    color: $yellow;
+    cursor: pointer;
+    border: 1px solid transparent;
+    &:hover{
+        border: 1px solid darken($yellow, $amount: 10)  !important;
+        text-decoration: underline;
+    }
+}
+
 .btn-hover:hover {
     background-color: rgba( $dark-grey, 0.1);
     cursor: pointer;

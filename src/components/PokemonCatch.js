@@ -1,32 +1,11 @@
 import {Link} from "react-router-dom";
 import React, { Component } from "react";
-import axios from "axios";
 
 class PokemonCatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
         };
-    }
-    catchPokemonFromAll(thisPoke) {
-        // console.log(this.state.pokeData); //the pokemon
-        // let postPoke = this.props.pokemons;
-        axios.post('http://localhost:8000/catchFromAll/',
-        {
-            name : thisPoke
-        })
-        .then( res => {
-            if( this.props.pokemons.includes(res.data.name))  {
-                return
-            }
-            console.log('res axios senno è triste in pokemonCard', res.data); //the pokemon
-        }).catch( err => {
-            console.log('axios error Post in pokemonCard', err);
-            //alert in extremis
-        })
-    }
-    handleSubmit(e){
-        e.preventDefault();
     }
     render() {
         
@@ -48,17 +27,15 @@ class PokemonCatch extends Component {
                                     </div>
                                 </Link>
                                 <div className="bottom">
-                                    <form onSubmit={this.handleSubmit}>
+                                    <form>
                                         <button className="btn-default btn-000 btn-catched" disabled>CATCHED</button>
                                     </form>
                                 </div>
                             </div>
                         )
                     })}
-
-                    </div>
+                </div>
                 }
-                
             </div>
         )
     }

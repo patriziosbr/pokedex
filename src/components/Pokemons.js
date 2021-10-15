@@ -29,8 +29,8 @@ class Pokemons extends Component {
     render(){
 
         const { loading, catchedFromAll, catchedDeatil } = this.state;
-        console.log(catchedFromAll);
-        console.log(catchedDeatil);
+        // console.log(catchedFromAll);
+        // console.log(catchedDeatil);
 
         return(
             <div className="bg-poke">

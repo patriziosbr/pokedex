@@ -51,7 +51,7 @@ class Pokemon extends Component {
     unionBy = (a, b, fn) => {
         const s = new Set(a.map(fn));
         let cleanPokemon = Array.from(new Set([...a, ...b.filter(x => !s.has(fn(x)))]));
-        console.log(cleanPokemon);
+        // console.log(cleanPokemon);
         this.setState({uniqueArrDett : cleanPokemon})
       };
 

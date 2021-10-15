@@ -31,6 +31,7 @@ class Catched extends Component {
         let cleanPokemon = Array.from(new Set([...a, ...b.filter(x => !s.has(fn(x)))]));
         this.setState({finalArr : cleanPokemon})
       };
+      
     // async componentDidMount () {
     //     this.setState({loading : true})
     //     await axios.get("http://localhost:8000/catched")

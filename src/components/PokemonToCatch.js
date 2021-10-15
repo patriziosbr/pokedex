@@ -6,28 +6,47 @@ class PokemonToCatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            allPoke : []
         };
     }
-    catchPokemonFromAll(thisPoke) {
-        // console.log(this.state.pokeData); //the pokemon
-        // let postPoke = this.props.pokemons;
-        axios.post('http://localhost:8000/catchFromAll/',
-        {
-            name : thisPoke
-        })
-        .then( res => {
-            if( this.props.pokemons.includes(res.data.name))  {
-                return
-            }
-            console.log('res axios senno è triste in pokemonCard', res.data); //the pokemon
-        }).catch( err => {
-            console.log('axios error Post in pokemonCard', err);
-            //alert in extremis
+    async componentDidMount() {
+        await axios.get("https://pokeapi.co/api/v2/pokemon")
+        .then(res => {
+            console.log(res);
+            this.setState({allPoke : res.data.results})
+        }).catch(err => {
+            console.log('err in to catch',err);
         })
     }
     render() {
         return(
             <div>
+                {
+                    this.props.pokemons.length === 0 && 
+                    <div  className="card-box">
+                    {this.state.allPoke.map((pokemon, key) => {
+                        return (
+                            <div className="card" key={key}>  
+                                <Link
+                                to={{
+                                    pathname: `pokemon/${pokemon.name}`
+                                }}>
+                                    <h3 className="text-black mt-5">{pokemon.name}</h3>
+                                    <div className="img-card">
+                                        <img src={`https://img.pokemondb.net/artwork/vector/large/${pokemon.name}.png`} alt={pokemon.name}/>
+                                    </div>
+                                <div className="bottom">
+                                    <button className="btn-default btn-000 mx-0">TO CATCH</button>
+                                </div>
+                                </Link>
+                            </div>
+                        )
+                    })}
+
+                    </div>
+                }
+
+
                 {
                     this.props.pokemons.length > 0 && 
                     <div  className="card-box">
