@@ -8,8 +8,8 @@
     padding: 16px;
     padding-bottom: 60px !important;
     .card{
-        height: 260px;
-        width: 160px;
+        height: 300px;
+        width: 200px;
         margin: 16px;
         box-shadow: 0px 5px 7px 0px $dark-grey;
         position: relative;
@@ -18,11 +18,12 @@
         background-color: #fff;
         h3 {
             text-transform: capitalize;
+            margin-bottom: 16px;
         }
         .img-card {
             height: 60%;
             width: 100%;
-            z-index: 1;
+            
             img {
                 height: 80%;
                 object-fit: contain;

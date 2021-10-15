@@ -72,7 +72,7 @@ a {
 }
 .btn-release {
     margin-left: 0;
-    margin-top: 16px;
+    margin-top: 8px;
     color: $yellow;
     cursor: pointer;
     border: 1px solid transparent;
@@ -102,4 +102,26 @@ a {
 .bg-poke{
     background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png');
     min-height: 100vh;
+}
+
+.center-page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 5px 7px 0px $dark-grey;
+    border-radius: 5px;
+    .center-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 56px 0 !important;
+        button {
+            margin-top: 32px;
+            &:hover {
+                background-color: $yellow;
+            }
+        }
+    }
 }

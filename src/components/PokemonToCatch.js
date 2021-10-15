@@ -35,7 +35,7 @@ class PokemonToCatch extends Component {
                     </div>
                 }
                 {
-                    this.props.pokemons.length > 0 && 
+                    this.props.pokemons.length > 0 ? 
                     <div  className="card-box">
                     {this.props.pokemons.map((pokemon, key) => {
                         return (
@@ -56,7 +56,17 @@ class PokemonToCatch extends Component {
                         )
                     })}
 
-                    </div>
+                    </div> : <div className="center-page">
+                            <div className="center-item">
+                                <h2>Well done,</h2>
+                                <h2>watch your results:</h2>
+                                <Link to={{
+                                    pathname : "/catched"
+                                }}>
+                                <button className="btn-default btn-000 mx-0"> CATCHED </button>
+                                </Link>
+                            </div>
+                        </div>
                 }
                 
             </div>

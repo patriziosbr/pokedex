@@ -6,7 +6,8 @@ class PokemonCatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            toDelete : []
+            toDelete : [],
+            alertMsg : 'are you sure you want release this pokemon? this action cannot be undone'
         };
     }
 
@@ -16,7 +17,6 @@ class PokemonCatch extends Component {
             axios.delete(`http://localhost:8000/catchFromAll/${id}`),
         ]).then(res => {
             console.log(res.data);
-            alert('are you sure you want release this pokemon? this action cannot be undone')
             const toDelete = this.props.pokemons.filter(item => item.id !== id)
             this.setState({ toDelete })
         });
@@ -26,7 +26,7 @@ class PokemonCatch extends Component {
         return(
             <div>
                 {
-                    this.props.pokemons.length > 0 && 
+                    this.props.pokemons.length > 0 ? 
                     <div  className="card-box">
                     {this.props.pokemons.map((pokemon, key) => {
                         return (
@@ -45,14 +45,23 @@ class PokemonCatch extends Component {
                                         <button className="btn-default btn-000 btn-catched" disabled>CATCHED</button>
                                         <button 
                                         className="btn-default btn-000 btn-release" 
-                                        onClick={(e) => {this.releasePoke( pokemon.id, e )}}
+                                        onClick={(e) => {if(window.confirm(this.state.alertMsg)) this.releasePoke( pokemon.id, e ) }}
                                         type="submit">RELEASE</button>
                                     </form>
                                 </div>
                             </div>
                         )
                     })}
-                </div>
+                </div> : <div className="center-page">
+                            <div className="center-item">
+                                <h2>Got to catch'em all</h2>
+                                <Link to={{
+                                    pathname : "/pokemons"
+                                }}>
+                                <button className="btn-default btn-000 mx-0"> GET THEM </button>
+                                </Link>
+                            </div>
+                        </div>
                 }
             </div>
         )

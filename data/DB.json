@@ -1,4 +1,81 @@
 {
   "catched": [],
-  "catchFromAll": []
+  "catchFromAll": [
+    {
+      "name": "bulbasaur",
+      "id": 1
+    },
+    {
+      "name": "charizard",
+      "id": 6
+    },
+    {
+      "name": "squirtle",
+      "id": 7
+    },
+    {
+      "name": "wartortle",
+      "id": 8
+    },
+    {
+      "name": "blastoise",
+      "id": 9
+    },
+    {
+      "name": "caterpie",
+      "id": 10
+    },
+    {
+      "name": "raticate",
+      "id": 11
+    },
+    {
+      "name": "rattata",
+      "id": 12
+    },
+    {
+      "name": "pidgeot",
+      "id": 13
+    },
+    {
+      "name": "pidgeotto",
+      "id": 14
+    },
+    {
+      "name": "butterfree",
+      "id": 15
+    },
+    {
+      "name": "metapod",
+      "id": 16
+    },
+    {
+      "name": "kakuna",
+      "id": 17
+    },
+    {
+      "name": "weedle",
+      "id": 18
+    },
+    {
+      "name": "beedrill",
+      "id": 19
+    },
+    {
+      "name": "pidgey",
+      "id": 20
+    },
+    {
+      "name": "charmander",
+      "id": 21
+    },
+    {
+      "name": "venusaur",
+      "id": 22
+    },
+    {
+      "name": "ivysaur",
+      "id": 23
+    }
+  ]
 }
